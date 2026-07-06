@@ -599,18 +599,9 @@ const Hero = () => {
 
         <div className="fx fx-5 tags">
           <span className="tag">full-stack</span>
-          <span className="tag">3D / WebGL</span>
           <span className="tag">1+ yrs experience</span>
         </div>
 
-        <div className="fx fx-6 cta-row">
-          <a className="btn btn-primary" href="#projects">
-            View Projects
-          </a>
-          <a className="btn btn-secondary" href="#contact">
-            Get in Touch
-          </a>
-        </div>
       </div>
 
       <div className="scroll-cue fx fx-6">
