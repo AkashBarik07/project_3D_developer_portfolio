@@ -16,22 +16,39 @@ const ExperienceCard = ({ experience, index }) => {
       }`}
     >
       {/* Card */}
-      <div className={`w-full md:w-[44%] ${isLeft ? "md:pr-14" : "md:pl-14"}`}>
-        <div className="bg-[#0d0d10] border border-white/10 rounded-2xl p-8 shadow-lg">
-          <h3 className="text-white text-[28px] font-bold">
-            {experience.title}
-          </h3>
+      <div className={`w-full md:w-[50%] ${isLeft ? "md:pr-14" : "md:pl-14"}`}>
+        <div className="relative bg-[#1d1836] rounded-[10px] overflow-hidden shadow-lg">
+          {/* Arrow */}
+          <div
+            className={`hidden md:block absolute top-10 w-4 h-4 bg-[#1d1836] rotate-45 ${
+              isLeft ? "-right-2" : "-left-2"
+            }`}
+          />
 
-          <p className="text-secondary mt-1 mb-5">{experience.company_name}</p>
+          {/* Content */}
+          <div className="p-8">
+            <h3 className="text-white text-[24px] font-bold">
+              {experience.title}
+            </h3>
 
-          <ul className="space-y-3">
-            {experience.points.map((point, i) => (
-              <li key={i} className="flex gap-2 text-gray-300 text-[15px]">
-                <span className="text-purple-400 mt-1">•</span>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
+            <p className="text-secondary text-[16px] font-semibold mt-1">
+              {experience.company_name}
+            </p>
+
+            <ul className="mt-5 ml-5 list-disc space-y-2">
+              {experience.points.map((point, i) => (
+                <li
+                  key={i}
+                  className="text-white-100 text-[14px] tracking-wider leading-7"
+                >
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Bottom white border like original */}
+          <div className="h-[3px] bg-white/80 w-full"></div>
         </div>
       </div>
 
