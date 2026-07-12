@@ -3,11 +3,12 @@ import { BrowserRouter } from "react-router-dom";
 import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
 import CustomCursor from "./components/CustomCursor";
 import GithubActivity from "./components/GithubActivity";
+import CompetitiveProfiles from "./components/CompetitiveProfiles";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <CustomCursor/>
+      <CustomCursor />
       <div className="relative z-0 bg-primary">
         <StarsCanvas />
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
@@ -18,12 +19,16 @@ const App = () => {
         <Experience />
         <Tech />
         <Works />
-        <GithubActivity username="AkashBarik07"/>
+        <GithubActivity username="AkashBarik07" />
+        <CompetitiveProfiles
+          leetcodeUsername="Akash__07"
+          codechefUsername="akashbarik_07"
+        />
         {/* <Feedbacks /> */}
-          {/* <Contact /> */}
+        {/* <Contact /> */}
         {/* <div className="relative z-0"> */}
-          <Contact />
-          {/* <StarsCanvas /> */}
+        <Contact />
+        {/* <StarsCanvas /> */}
         {/* </div> */}
       </div>
     </BrowserRouter>
