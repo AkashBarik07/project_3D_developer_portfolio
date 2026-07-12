@@ -225,7 +225,7 @@ function GraphScene({ reducedMotion }) {
     <div
       ref={wrapRef}
       aria-hidden="true"
-      style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", marginLeft:"18rem"}}
     >
       {inView && (
         <Canvas
@@ -265,7 +265,8 @@ const Hero = () => {
           width: 100%;
           min-height: 100vh;
           overflow: hidden;
-          background: radial-gradient(ellipse 120% 80% at 50% -10%, ${COLORS.bgSoft} 0%, ${COLORS.bg} 55%);
+          background: #050816;
+          {/* background: radial-gradient(ellipse 120% 80% at 50% -10%, ${COLORS.bgSoft} 0%, ${COLORS.bg} 55%); */}
           color: ${COLORS.text};
           font-family: 'Inter', sans-serif;
           display: flex;
@@ -285,7 +286,7 @@ const Hero = () => {
           position: absolute;
           inset: 0;
           z-index: 1;
-          background: linear-gradient(180deg, rgba(10,13,20,0) 0%, rgba(10,13,20,0.35) 60%, ${COLORS.bg} 100%);
+          {/* background: linear-gradient(180deg, rgba(10,13,20,0) 0%, rgba(10,13,20,0.35) 60%, ${COLORS.bg} 100%); */}
           pointer-events: none;
         }
 
@@ -412,7 +413,12 @@ const Hero = () => {
           align-items: center;
           flex-wrap: wrap;
         }
-        .role-line .prompt { color: ${COLORS.violet}; margin-right: 0.6rem; }
+        .role-line .prompt { 
+          color: ${COLORS.violet}; 
+          font-size: 2rem;
+          font-weight: 700;
+          margin-right: 8px;
+        }
         .role-line .role-word { color: ${COLORS.teal}; }
         .cursor {
           display: inline-block;
@@ -561,7 +567,7 @@ const Hero = () => {
           <span>$ whoami</span>
         </div>
 
-        <p className="fx fx-2 kicker">
+        <p className="fx fx-2 kicker font-weight:">
           Hi, I'm <span className="name">Akash</span> — an engineer who
         </p>
 
@@ -585,7 +591,8 @@ const Hero = () => {
 
         <p className="fx fx-4 role-line">
           <span className="prompt">&gt;</span>
-          I'm a&nbsp;<span className="role-word">{typedRole}</span>
+          I'm a&nbsp;
+          <span className="role-word">{typedRole.toUpperCase()}</span>
           <span className="cursor" />
         </p>
 
@@ -601,7 +608,6 @@ const Hero = () => {
           <span className="tag">full-stack</span>
           <span className="tag">1+ yrs experience</span>
         </div>
-
       </div>
 
       <div className="scroll-cue fx fx-6">
