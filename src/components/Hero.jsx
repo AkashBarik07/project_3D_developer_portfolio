@@ -597,11 +597,12 @@ const Hero = () => {
         </p>
 
         <p className="fx fx-5 bio">
-          Currently a <strong>Software Engineer</strong> at{" "}
-          <strong>Microbase Infotech</strong>. Self-taught, shipping product for{" "}
-          <strong>1+ years</strong> in the industry — I build meaningful,
-          delightful digital products, blending 3D visuals with clean,
-          functional interfaces that balance user needs and business goals.
+          <strong>Software Engineer</strong> at{" "}
+          <strong>Microbase Infotech</strong>, self-taught and shipping in
+          production for <strong>2+ years</strong>. I build full-stack products
+          with clean architecture and immersive 3D interfaces — the kind that
+          make users stop scrolling. If you need something built right and built
+          beautifully, that's what I do.
         </p>
 
         <div className="fx fx-5 tags">

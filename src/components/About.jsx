@@ -45,16 +45,20 @@ const About = () => {
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        I'm a skilled software developer with experience in TypeScript and
-        JavaScript, and expertise in frameworks like React, Node.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
+        Great products aren't built by writing code alone they're built by
+        solving real problems at scale. I've developed production ready web
+        applications, CMS driven platforms, and backend services that power
+        seamless user experiences. From designing responsive interfaces to
+        building scalable APIs, integrating third party services, and optimizing
+        application performance, I enjoy delivering solutions that are reliable,
+        maintainable, and built for growth. I thrive on tackling complex
+        challenges, learning continuously, and turning ideas into products that
+        create real impact.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
