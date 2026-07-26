@@ -124,7 +124,7 @@ const Tech = () => {
         <p className="text-secondary text-[17px] tracking-wider uppercase font-mono">
           // What I work with
         </p>
-        <h2 className="text-white font-black text-[40px] mt-2">Technologies</h2>
+        <h2 className="text-white font-black text-[60px] mt-2">Technologies</h2>
       </motion.div>
 
       <div className="relative w-full flex flex-col items-center">
