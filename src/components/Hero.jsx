@@ -1,3 +1,4 @@
+import heroPortrait from "../assets/ProfilePic.jpeg";
 import { useState, useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -84,6 +85,108 @@ const useReducedMotion = () => {
   return reduced;
 };
 
+/* ------------------------------------------------------------------ */
+/*  Profile card — white card floating on the hero, styled like a      */
+/*  professional profile block: gradient photo panel with status pill, */
+/*  name/role/description, social icons, and a stat row.                */
+/*  Falls back to a labeled placeholder so a missing image never         */
+/*  breaks layout.                                                       */
+/* ------------------------------------------------------------------ */
+
+
+function PortraitCard({ reducedMotion, loaded }) {
+  const [failed, setFailed] = useState(false);
+
+  const socials = [
+    {
+      label: "GitHub",
+      href: "https://github.com/akashbarik_07",
+      icon: (
+        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.79-.25.79-.55 0-.27-.01-1.15-.02-2.09-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.42.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.21.66.8.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+      ),
+    },
+    {
+      label: "LeetCode",
+      href: "https://leetcode.com/Akash__07",
+      icon: (
+        <path d="M13.5 2.5 6.7 9.4a2.3 2.3 0 0 0 0 3.2l4.6 4.6a2.3 2.3 0 0 0 3.2 0l2-2a1.1 1.1 0 0 0-1.6-1.6l-1.9 1.9-4.2-4.2 6.1-6.1a1.1 1.1 0 1 0-1.6-1.7zm-.4 14.6L11 19.2a2.3 2.3 0 0 0 0 3.2c.9.9 2.3.9 3.2 0l2.1-2.1a1.1 1.1 0 1 0-1.6-1.6l-1.6 1.6zm7.4-5.4H10a1.1 1.1 0 1 0 0 2.2h10.5a1.1 1.1 0 1 0 0-2.2z" />
+      ),
+    },
+    {
+      label: "CodeChef",
+      href: "https://www.codechef.com/users/AkashBarik07",
+      icon: (
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zM7 10.5c.55 0 1 .45 1 1v3.5c1.1 1.4 2.9 2.3 4.9 2.3s3.8-.9 4.9-2.3V11.5c0-.55.45-1 1-1s1 .45 1 1v3.8c-1.4 2-3.7 3.2-6.9 3.2s-5.5-1.2-6.9-3.2V11.5c0-.55.45-1 1-1z" />
+      ),
+    },
+  ];
+
+  return (
+    <><div className="profile-card">
+      <div className="profile-photo-frame">
+        <span className="pill-status">
+          <span className="pill-dot" />
+          open to work
+        </span>
+
+        <div className="profile-photo">
+          {heroPortrait && !failed ? (
+            <img
+              src={heroPortrait}
+              alt="Akash Barik"
+              onError={() => setFailed(true)} />
+          ) : (
+            <div className="portrait-placeholder">
+              <span>// add src/assets/hero-portrait.jpg</span>
+            </div>
+          )}
+          {loaded && <span className="scan-sweep" />}
+        </div>
+      </div>
+
+      <div className="profile-body">
+        <h3 className="profile-name">Akash Barik</h3>
+        <p className="profile-role">Software Engineer</p>
+        <p className="profile-desc">
+          Building full-stack products with clean architecture and
+          immersive 3D interfaces.
+        </p>
+
+        <div className="social-row">
+          {socials.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.label}
+              className="social-icon"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                {s.icon}
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div className="stats-row">
+        <div className="stat">
+          <span className="stat-num">1+</span>
+          <span className="stat-label">Years Exp</span>
+        </div>
+        <div className="stat">
+          <span className="stat-num">10+</span>
+          <span className="stat-label">Projects</span>
+        </div>
+        <div className="stat">
+          <span className="stat-num">4</span>
+          <span className="stat-label">Core Stacks</span>
+        </div>
+      </div>
+    </>
+  );
+}
 /* ------------------------------------------------------------------ */
 /*  Signature element: rotating dependency-graph sphere                */
 /*  (built on @react-three/fiber so it shares one WebGL context budget  */
@@ -222,11 +325,7 @@ function GraphScene({ reducedMotion }) {
   }, []);
 
   return (
-    <div
-      ref={wrapRef}
-      aria-hidden="true"
-      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", marginLeft:"18rem"}}
-    >
+    <div ref={wrapRef} aria-hidden="true" className="hero-scene-layer">
       {inView && (
         <Canvas
           camera={{ position: [0, 0, 8.5], fov: 45 }}
@@ -266,7 +365,6 @@ const Hero = () => {
           min-height: 100vh;
           overflow: hidden;
           background: #050816;
-          {/* background: radial-gradient(ellipse 120% 80% at 50% -10%, ${COLORS.bgSoft} 0%, ${COLORS.bg} 55%); */}
           color: ${COLORS.text};
           font-family: 'Inter', sans-serif;
           display: flex;
@@ -275,26 +373,211 @@ const Hero = () => {
 
         .hero-inner {
           position: relative;
-          z-index: 2;
+          z-index: 3;
           width: 100%;
           max-width: 1180px;
           margin: 0 auto;
           padding: 7rem 1.5rem 5rem;
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 3rem;
+          align-items: center;
+        }
+
+        .hero-copy { min-width: 0; }
+
+        /* ---- profile card: white card w/ gradient photo panel ---- */
+        .profile-card {
+          position: relative;
+          z-index: 1;
+          width: min(300px, 100%);
+          margin: 0 auto;
+          background: #ffffff;
+          border-radius: 24px;
+          padding: 14px 14px 20px;
+          box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55);
+          transition: transform 0.3s ease;
+        }
+        .profile-card:hover {
+          transform: translateY(-4px);
+        }
+
+        .profile-photo-frame {
+          position: relative;
+          border-radius: 18px;
+          overflow: hidden;
+          aspect-ratio: 4 / 4.4;
+          background: linear-gradient(160deg, ${COLORS.violet} 0%, #6d3fd6 45%, ${COLORS.teal} 130%);
+        }
+
+        .pill-status {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.62rem;
+          letter-spacing: 0.04em;
+          color: #fff;
+          background: rgba(5, 8, 15, 0.4);
+          backdrop-filter: blur(6px);
+          padding: 4px 9px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .pill-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: ${COLORS.teal};
+          box-shadow: 0 0 6px ${COLORS.teal};
+        }
+        .loaded .pill-dot {
+          animation: pulse 2.2s ease-in-out infinite;
+        }
+
+        .profile-photo {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        .profile-photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 15%;
+          filter: saturate(1.05) contrast(1.05);
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .profile-card:hover .profile-photo img {
+          transform: scale(1.05);
+        }
+        .portrait-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 1.5rem;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.72rem;
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.8);
+        }
+        .scan-sweep {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 45%;
+          top: -45%;
+          background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%);
+          pointer-events: none;
+          animation: sweep 1.3s cubic-bezier(0.4, 0, 0.2, 1) 0.9s 1;
+        }
+        @keyframes sweep {
+          to { top: 100%; }
+        }
+
+        .profile-body {
+          padding: 16px 6px 4px;
+        }
+        .profile-name {
+          font-family: 'Space Grotesk', sans-serif;
+          font-weight: 700;
+          font-size: 1.15rem;
+          color: #0a0d14;
+          margin: 0;
+        }
+        .profile-role {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.75rem;
+          color: ${COLORS.violet};
+          margin: 2px 0 0;
+          font-weight: 500;
+        }
+        .profile-desc {
+          font-size: 0.82rem;
+          line-height: 1.5;
+          color: #555b6b;
+          margin: 8px 0 0;
+        }
+
+        .social-row {
+          display: flex;
+          gap: 8px;
+          margin-top: 12px;
+        }
+        .social-icon {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f2f1f6;
+          color: #0a0d14;
+          transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+        .social-icon:hover {
+          background: ${COLORS.violet};
+          color: #fff;
+          transform: translateY(-2px);
+        }
+
+        .stats-row {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 16px;
+          padding-top: 14px;
+          border-top: 1px solid #eceef3;
+        }
+        .stat {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1px;
+        }
+        .stat-num {
+          font-family: 'Space Grotesk', sans-serif;
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: #0a0d14;
+        }
+        .stat-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.6rem;
+          letter-spacing: 0.03em;
+          color: #8a8fa0;
+          text-transform: uppercase;
+        }
+
+        .hero-scene-layer {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
         }
 
         .hero-scene-fade {
           position: absolute;
           inset: 0;
-          z-index: 1;
-          {/* background: linear-gradient(180deg, rgba(10,13,20,0) 0%, rgba(10,13,20,0.35) 60%, ${COLORS.bg} 100%); */}
+          z-index: 2;
+          background: linear-gradient(180deg, rgba(10,13,20,0) 0%, rgba(10,13,20,0.35) 60%, ${COLORS.bg} 100%);
           pointer-events: none;
         }
 
         .hero-vignette {
           position: absolute;
           inset: 0;
-          z-index: 1;
-          background: radial-gradient(ellipse 60% 55% at 18% 45%, rgba(10,13,20,0.55) 0%, rgba(10,13,20,0) 60%);
+          z-index: 2;
+          background:
+            radial-gradient(ellipse 60% 55% at 18% 45%, rgba(10,13,20,0.6) 0%, rgba(10,13,20,0) 60%),
+            linear-gradient(90deg, rgba(10,13,20,0) 45%, rgba(5,8,15,0.5) 62%, rgba(5,8,15,0.72) 100%);
           pointer-events: none;
         }
 
@@ -373,28 +656,23 @@ const Hero = () => {
           background-clip: text;
           color: transparent;
         }
-        .headline .circle-svg {
+        .headline .accent::after {
+          content: '';
           position: absolute;
-          left: -6%;
-          top: -18%;
-          width: 112%;
-          height: 140%;
-          overflow: visible;
-          pointer-events: none;
+          left: 2%;
+          right: 2%;
+          bottom: -0.08em;
+          height: 0.11em;
+          border-radius: 999px;
+          background: linear-gradient(90deg, ${COLORS.violet}, ${COLORS.teal});
+          transform-origin: left center;
+          transform: scaleX(0);
         }
-        .headline .circle-path {
-          fill: none;
-          stroke: ${COLORS.violet};
-          stroke-width: 2.5;
-          stroke-linecap: round;
-          stroke-dasharray: 300;
-          stroke-dashoffset: 300;
+        .loaded .headline .accent::after {
+          animation: underlineIn 0.7s cubic-bezier(0.65, 0, 0.35, 1) 1.05s forwards;
         }
-        .loaded .headline .circle-path {
-          animation: draw 1s cubic-bezier(0.65, 0, 0.35, 1) 1.1s forwards;
-        }
-        @keyframes draw {
-          to { stroke-dashoffset: 0; }
+        @keyframes underlineIn {
+          to { transform: scaleX(1); }
         }
 
         .lede {
@@ -413,8 +691,8 @@ const Hero = () => {
           align-items: center;
           flex-wrap: wrap;
         }
-        .role-line .prompt { 
-          color: ${COLORS.violet}; 
+        .role-line .prompt {
+          color: ${COLORS.violet};
           font-size: 2rem;
           font-weight: 700;
           margin-right: 8px;
@@ -508,7 +786,7 @@ const Hero = () => {
           bottom: 2rem;
           left: 50%;
           transform: translateX(-50%);
-          z-index: 2;
+          z-index: 3;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -545,10 +823,22 @@ const Hero = () => {
 
         @media (prefers-reduced-motion: reduce) {
           .fx { opacity: 1 !important; transform: none !important; animation: none !important; }
-          .cursor, .eyebrow .dot, .scroll-cue .stem::after, .headline .circle-path {
+          .cursor, .eyebrow .dot, .scroll-cue .stem::after, .scan-sweep, .pill-dot {
             animation: none !important;
           }
-          .headline .circle-path { stroke-dashoffset: 0; }
+          .headline .accent::after { transform: scaleX(1); }
+          .profile-card { transform: none !important; }
+        }
+
+        @media (max-width: 900px) {
+          .hero-inner {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+          .hero-vignette {
+            background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(10,13,20,0.6) 0%, rgba(10,13,20,0) 65%);
+          }
+          .profile-card { order: -1; }
         }
 
         @media (max-width: 640px) {
@@ -562,52 +852,49 @@ const Hero = () => {
       <div className="hero-scene-fade" />
 
       <div className={`hero-inner ${loaded ? "loaded" : ""}`}>
-        <div className="fx fx-1 eyebrow">
-          <span className="dot" />
-          <span>$ whoami</span>
+        <div className="hero-copy">
+          <div className="fx fx-1 eyebrow">
+            <span className="dot" />
+            <span>$ whoami</span>
+          </div>
+
+          <p className="fx fx-2 kicker">
+            Hi, I'm <span className="name">Akash</span> — an engineer who
+          </p>
+
+          <h1 className="fx fx-3 headline">
+            Ships code that{" "}
+            <span className="accent">scales</span>.
+          </h1>
+
+          <p className="fx fx-3 lede">
+            Because if it breaks in production, nothing else matters.
+          </p>
+
+          <p className="fx fx-4 role-line">
+            <span className="prompt">&gt;</span>
+            I'm a&nbsp;
+            <span className="role-word">{typedRole.toUpperCase()}</span>
+            <span className="cursor" />
+          </p>
+
+          <p className="fx fx-5 bio">
+            <strong>Software Engineer</strong> at{" "}
+            <strong>Microbase Infotech</strong>, self-taught and shipping in
+            production for <strong>2+ years</strong>. I build full-stack
+            products with clean architecture and immersive 3D interfaces — the
+            kind that make users stop scrolling. If you need something built
+            right and built beautifully, that's what I do.
+          </p>
+
+          <div className="fx fx-5 tags">
+            <span className="tag">full-stack</span>
+            <span className="tag">1+ yrs experience</span>
+          </div>
         </div>
 
-        <p className="fx fx-2 kicker font-weight:">
-          Hi, I'm <span className="name">Akash</span> — an engineer who
-        </p>
-
-        <h1 className="fx fx-3 headline">
-          Ships code that{" "}
-          <span className="accent" style={{ position: "relative" }}>
-            scales
-            <svg className="circle-svg" viewBox="0 0 140 60">
-              <path
-                className="circle-path"
-                d="M8,32 C8,10 40,4 70,4 C108,4 132,14 132,32 C132,52 100,56 70,56 C36,56 8,52 8,32"
-              />
-            </svg>
-          </span>
-          .
-        </h1>
-
-        <p className="fx fx-3 lede">
-          Because if it breaks in production, nothing else matters.
-        </p>
-
-        <p className="fx fx-4 role-line">
-          <span className="prompt">&gt;</span>
-          I'm a&nbsp;
-          <span className="role-word">{typedRole.toUpperCase()}</span>
-          <span className="cursor" />
-        </p>
-
-        <p className="fx fx-5 bio">
-          <strong>Software Engineer</strong> at{" "}
-          <strong>Microbase Infotech</strong>, self-taught and shipping in
-          production for <strong>2+ years</strong>. I build full-stack products
-          with clean architecture and immersive 3D interfaces — the kind that
-          make users stop scrolling. If you need something built right and built
-          beautifully, that's what I do.
-        </p>
-
-        <div className="fx fx-5 tags">
-          <span className="tag">full-stack</span>
-          <span className="tag">1+ yrs experience</span>
+        <div className="fx fx-4">
+          <PortraitCard reducedMotion={reducedMotion} loaded={loaded} />
         </div>
       </div>
 
