@@ -124,10 +124,10 @@ function PortraitCard({ reducedMotion, loaded }) {
   return (
     <><div className="profile-card">
       <div className="profile-photo-frame">
-        <span className="pill-status">
+        {/* <span className="pill-status">
           <span className="pill-dot" />
           open to work
-        </span>
+        </span> */}
 
         <div className="profile-photo">
           {heroPortrait && !failed ? (
