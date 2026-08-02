@@ -214,52 +214,73 @@ const projects = [
   {
     name: "DNAKEY.ai",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Designed and developed a full featured e-commerce website for DNA Key, a premium health and wellness supplement brand. The platform showcases a clean, conversion-focused shop experience built for a science-driven, DTC (direct-to-consumer) supplement business with Advanced Product Filtering, Product Grid & Quick View.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "postgresql",
         color: "green-text-gradient",
       },
       {
         name: "tailwind",
         color: "pink-text-gradient",
       },
+      {
+        name: "nodejs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "zustand",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "stripe",
+        color: "green-text-gradient",
+      },
+      {
+        name: "prisma",
+        color: "pink-text-gradient",
+      },
     ],
     image: dnakeyai,
     source_code_link: "https://github.com/",
+    url: "https://dnakey.ai",
   },
   {
     name: "CULMINATEH.ai",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Designed and developed the corporate website for Culminate Health, an advanced health science company blending 10+ years of biotech research with AI driven personalized wellness. The site presents a sophisticated, science first brand across multiple application verticals dietary supplements, skincare, oral rehydration, superfoods, low carcinogen coffee, and precision health.                                  ",
     tags: [
       {
-        name: "react",
+        name: "nextjs",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "nodejs",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "tailwind",
         color: "pink-text-gradient",
+      },
+      {
+        name: "postgresql",
+        color: "green-text-gradient",
       },
     ],
     image: culminatehai,
     source_code_link: "https://github.com/",
+    url:"https://www.culminateh.ai"
   },
   {
     name: "whitedrop.co.in",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+    description: "Designed and developed the e-commerce website for White Drop, a farm-to-doorstep dairy brand delivering pure A2 cow milk and dairy staples fresh every morning. The site combines a warm, editorial brand feel with a functional online store, built to reflect the brand's promise of daily freshness and traditional quality.",
     tags: [
       {
-        name: "nextjs",
+        name: "react",
         color: "blue-text-gradient",
       },
       {
@@ -267,12 +288,29 @@ const projects = [
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "tailwind",
         color: "pink-text-gradient",
+      },
+      {
+        name: "prisma",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "postgresql",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "firebase authentication",
+        color: "green-text-gradient",
       },
     ],
     image: whitedrop,
     source_code_link: "https://github.com/",
+    url:"https://whitedrop.co.in"
   },
 ];
 
