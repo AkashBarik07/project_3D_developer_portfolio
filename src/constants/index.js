@@ -130,16 +130,16 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Fulll Stack Developer",
+    title: "Full Stack Developer",
     company_name: "ITJOBXS",
     icon: itjobxs,
     iconBg: "#383E56",
-    date: "March 2020 - April 2021",
+    date: "Jan 2025 - Sep 2026",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed and maintained full stack web applications using React.js, Node.js, Express.js, and MongoDB.",
+      "Contributed to the development and implementation of features such as user authentication, role based access control, and enterprise user management.",
+      "Reduced the response time for URL file scanning by approximately 40% through the implementation of asynchronous operations.",
+      "Collaborated with cross functional teams including designers, product managers, and other developers to build and ship high quality products.",
     ],
   },
   {
@@ -147,11 +147,11 @@ const experiences = [
     company_name: "Microbase Infotech Pvt. Ltd.",
     icon: microbaseInfotech,
     iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
+    date: "Sep 2025 - Feb 2026",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
+      "Developing and maintaining cross platform mobile applications using React Native and related technologies.",
+      "Collaborating with cross functional teams including designers, product managers, and other developers to create high quality products.",
+      "Implementing responsive UI and ensuring smooth performance across both iOS and Android platforms.",
       "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
@@ -169,16 +169,16 @@ const experiences = [
   //   ],
   // },
   {
-    title: "Full stack Developer",
+    title: "Full Stack Developer",
     company_name: "Microbase Infotech Pvt. Ltd.",
     icon: microbaseInfotech,
     iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
+    date: "Sep 2025 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Owned the complete software development lifecycle, from requirements gathering and system design to deployment, monitoring, and post release maintenance of enterprise web applications.",
+      "Designed scalable backend architectures and database schemas capable of supporting high volume content management, user authentication, and third party service integrations.",
+      "Established best practices for code quality, API design, state management, and application architecture, significantly improving maintainability and development velocity.",
+      "Technologies: React.js, Node.js, Express.js, PostgreSQL, Prisma ORM, TailwindCSS, AWS, CI/CD.",
     ],
   },
 ];
@@ -214,7 +214,7 @@ const projects = [
   {
     name: "DNAKEY.ai",
     description:
-      "Designed and developed a full featured e-commerce website for DNA Key, a premium health and wellness supplement brand. The platform showcases a clean, conversion-focused shop experience built for a science-driven, DTC (direct-to-consumer) supplement business with Advanced Product Filtering, Product Grid & Quick View.",
+      "Designed and developed a full featured e-commerce website for DNA Key, a premium health and wellness supplement brand. The platform showcases a clean, conversion focused shop experience built for a science driven, DTC (direct to consumer) supplement business with Advanced Product Filtering, Product Grid & Quick View.",
     tags: [
       {
         name: "react",
