@@ -889,7 +889,7 @@ const Hero = () => {
 
           <div className="fx fx-5 tags">
             <span className="tag">full-stack</span>
-            <span className="tag">1+ yrs experience</span>
+            <span className="tag">2+ yrs experience</span>
           </div>
         </div>
 
