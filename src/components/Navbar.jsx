@@ -22,7 +22,7 @@ import { logo } from "../assets";
 
 const handleResumeDownload = async () => {
   try {
-    const response = await fetch("/resume.pdf");
+    const response = await fetch("/AkashBarik_2026.pdf");
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
 
