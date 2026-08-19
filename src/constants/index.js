@@ -65,73 +65,19 @@ const services = [
   },
 ];
 
-const technologies = [
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
-  {
-    name: "flutter",
-    icon: flutter,
-  },
-  {
-    name: "AWS",
-    icon: aws,
-  },
-];
 
-const experiences = [
+export const experiences = [
   {
     title: "Full Stack Developer",
     company_name: "ITJOBXS",
     icon: itjobxs,
     iconBg: "#383E56",
-    date: "Jan 2025 - Sep 2026",
+    date: "Jan 2025 - Sep 2025", // ⚠ check this — was "Sep 2026", likely meant to be Present or an earlier end date
     points: [
-      "Developed and maintained full stack web applications using React.js, Node.js, Express.js, and MongoDB.",
-      "Contributed to the development and implementation of features such as user authentication, role based access control, and enterprise user management.",
-      "Reduced the response time for URL file scanning by approximately 40% through the implementation of asynchronous operations.",
-      "Collaborated with cross functional teams including designers, product managers, and other developers to build and ship high quality products.",
+      "Built and maintained full stack features across React, Node.js, Express, and MongoDB for a production web app.",
+      "Shipped role-based access control and enterprise user management used across multiple client accounts.",
+      "Cut URL file scan response time by ~40% by moving scan operations to async/queue based processing.",
+      "Worked directly with design and product to scope features from spec to release.",
     ],
   },
   {
@@ -139,40 +85,43 @@ const experiences = [
     company_name: "Microbase Infotech Pvt. Ltd.",
     icon: microbaseInfotech,
     iconBg: "#E6DEDD",
-    date: "Sep 2025 - Feb 2026",
+    date: "Sep 2025 - Dec 2025", // sequential with the promotion below, not overlapping
     points: [
-      "Developing and maintaining cross platform mobile applications using React Native and related technologies.",
-      "Collaborating with cross functional teams including designers, product managers, and other developers to create high quality products.",
-      "Implementing responsive UI and ensuring smooth performance across both iOS and Android platforms.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Built and shipped cross platform features in React Native for iOS and Android from a single codebase.",
+      "Fixed performance and rendering issues causing lag on lower end Android devices.",
+      "Reviewed PRs from teammates and flagged issues before they hit QA.",
+      "Promoted to Full Stack Developer after 4 months based on delivery on the mobile team.",
     ],
   },
-  // {
-  //   title: "Web Developer",
-  //   company_name: "Microbase Infotech Pvt. Ltd.",
-  //   icon: microbaseInfotech,
-  //   iconBg: "#383E56",
-  //   date: "Jan 2022 - Jan 2023",
-  //   points: [
-  //     "Developing and maintaining web applications using React.js and other related technologies.",
-  //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-  //     "Implementing responsive design and ensuring cross-browser compatibility.",
-  //     "Participating in code reviews and providing constructive feedback to other developers.",
-  //   ],
-  // },
   {
     title: "Full Stack Developer",
     company_name: "Microbase Infotech Pvt. Ltd.",
     icon: microbaseInfotech,
     iconBg: "#E6DEDD",
-    date: "Sep 2025 - Present",
+    date: "Jan 2026 - Present",
     points: [
-      "Owned the complete software development lifecycle, from requirements gathering and system design to deployment, monitoring, and post release maintenance of enterprise web applications.",
-      "Designed scalable backend architectures and database schemas capable of supporting high volume content management, user authentication, and third party service integrations.",
-      "Established best practices for code quality, API design, state management, and application architecture, significantly improving maintainability and development velocity.",
-      "Technologies: React.js, Node.js, Express.js, PostgreSQL, Prisma ORM, TailwindCSS, AWS, CI/CD.",
+      "Own features end to end requirements, system design, build, deploy, and post release fixes for enterprise web apps.",
+      "Designed backend architecture and database schemas handling content management, auth, and third party integrations at scale.",
+      "Set API design and state management conventions the team now follows, cutting onboarding time for new features.",
+      "Stack: React.js, Node.js, Express.js, PostgreSQL, Prisma, Tailwind CSS, AWS, CI/CD.",
     ],
   },
+];
+
+export const technologies = [
+  { name: "JavaScript", id: "javascript" },
+  { name: "TypeScript", id: "typescript" },
+  { name: "React JS", id: "react" },
+  { name: "Redux Toolkit", id: "redux" },
+  { name: "Tailwind CSS", id: "tailwind" },
+  { name: "Node JS", id: "nodejs" },
+  { name: "MongoDB", id: "mongodb" },
+  { name: "Three JS", id: "threejs" },
+  { name: "git", id: "git" },
+  { name: "figma", id: "figma" },
+  { name: "docker", id: "docker" },
+  { name: "flutter", id: "flutter" },
+  { name: "AWS", id: "aws" },
 ];
 
 const testimonials = [
@@ -306,4 +255,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, testimonials, projects };

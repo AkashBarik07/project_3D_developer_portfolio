@@ -148,8 +148,7 @@ function PortraitCard({ reducedMotion, loaded }) {
         <h3 className="profile-name">Akash Barik</h3>
         <p className="profile-role">Software Engineer</p>
         <p className="profile-desc">
-          Building full-stack products with clean architecture and
-          immersive 3D interfaces.
+          FullStack by trade, detail obsessed by habit. I build things that hold up.
         </p>
 
         <div className="social-row">
@@ -880,15 +879,15 @@ const Hero = () => {
 
           <p className="fx fx-5 bio">
             <strong>Software Engineer</strong> at{" "}
-            <strong>Microbase Infotech</strong>, self-taught and shipping in
-            production for <strong>2+ years</strong>. I build full-stack
-            products with clean architecture and immersive 3D interfaces — the
-            kind that make users stop scrolling. If you need something built
-            right and built beautifully, that's what I do.
+            <strong>Microbase Infotech</strong>, self taught and shipping in
+            production for <strong>2+ years</strong>. I build fullStack products
+            with clean architecture the kind that make users stop scrolling.
+            If you need something built right and built beautifully, that's what
+            I do.
           </p>
 
           <div className="fx fx-5 tags">
-            <span className="tag">full-stack</span>
+            <span className="tag">fullStack</span>
             <span className="tag">2+ yrs experience</span>
           </div>
         </div>

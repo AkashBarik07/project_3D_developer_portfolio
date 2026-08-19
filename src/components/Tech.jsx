@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { BallCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { textVariant } from "../utils/motion";
+import { TECH_ICONS } from "./TechIcons";
 
 /* -------------------------------------------------------------------------
    ORBIT ENGINE
@@ -15,12 +15,17 @@ import { textVariant } from "../utils/motion";
    A nested "counter" spin cancels the parent's rotation so icons stay
    upright, while the connector trace (a sibling of the node, inside the
    same pivot) is left un-countered so it always points from core -> node.
+
+   Icons come from ./TechIcons — a small custom monoline SVG set keyed by
+   technology id, so the ring never depends on external logo image assets.
+   `technologies` in ../constants should provide { name, id } per entry,
+   where `id` maps to a key in TECH_ICONS (falls back to a lettermark).
 ------------------------------------------------------------------------- */
 
 const RING_CONFIG = [
-  { fraction: 0.34, duration: 26, direction: "normal", accent: "#22d3ee" }, // cyan
-  { fraction: 0.62, duration: 38, direction: "reverse", accent: "#a855f7" }, // violet
-  { fraction: 0.9, duration: 50, direction: "normal", accent: "#f472b6" }, // pink
+  { fraction: 0.34, duration: 26, direction: "normal" },
+  { fraction: 0.62, duration: 38, direction: "reverse" },
+  { fraction: 0.9, duration: 50, direction: "normal" },
 ];
 
 const HUD_LINES = {
@@ -33,7 +38,16 @@ const buildFlavorLines = (name) => [
   `CLEARANCE ...... GRANTED`,
 ];
 
+const resolveIcon = (tech) => {
+  const key = tech.id || tech.name?.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return TECH_ICONS[key] || null;
+};
+
 const OrbitNode = ({ tech, radius, ring, delay, onFocus, onBlur, focused }) => {
+  const entry = resolveIcon(tech);
+  const accent = entry?.color || "#8892a0";
+  const Icon = entry?.Icon;
+
   return (
     <div
       className="tech-orbit-pivot"
@@ -48,7 +62,7 @@ const OrbitNode = ({ tech, radius, ring, delay, onFocus, onBlur, focused }) => {
         className="tech-orbit-trace"
         style={{
           width: radius,
-          background: `linear-gradient(90deg, ${ring.accent}00, ${ring.accent}66)`,
+          background: `linear-gradient(90deg, ${accent}00, ${accent}77)`,
         }}
       />
 
@@ -67,21 +81,31 @@ const OrbitNode = ({ tech, radius, ring, delay, onFocus, onBlur, focused }) => {
             onMouseEnter={() => onFocus(tech)}
             onMouseLeave={onBlur}
             onBlur={onBlur}
-            whileHover={{ scale: 1.18 }}
-            whileFocus={{ scale: 1.18 }}
+            whileHover={{ scale: 1.16, y: -2 }}
+            whileFocus={{ scale: 1.16, y: -2 }}
+            whileTap={{ scale: 1.02 }}
             className="tech-node"
             style={{
-              "--glow": ring.accent,
+              "--glow": accent,
               boxShadow: focused
-                ? `0 0 0 1px ${ring.accent}aa, 0 0 26px 4px ${ring.accent}55`
-                : `0 0 0 1px ${ring.accent}33`,
+                ? `0 0 0 1px ${accent}aa, 0 0 30px 6px ${accent}4d`
+                : `0 0 0 1px ${accent}33`,
             }}
             aria-label={tech.name}
           >
-            <div className="tech-node-ball">
-              <BallCanvas icon={tech.icon} />
-            </div>
+            <span className="tech-node-sheen" />
+            {Icon ? (
+              <Icon className="tech-node-icon" style={{ color: accent }} />
+            ) : (
+              <span className="tech-node-fallback" style={{ color: accent }}>
+                {tech.name?.slice(0, 2).toUpperCase()}
+              </span>
+            )}
           </motion.button>
+
+          <span className="tech-node-tag" style={{ "--glow": accent }}>
+            {tech.name}
+          </span>
         </div>
       </div>
     </div>
@@ -131,7 +155,7 @@ const Tech = () => {
         {/* ORBIT VIEWPORT */}
         <div
           ref={containerRef}
-          className="tech-viewport relative w-full max-w-[1100px] h-[380px] sm:h-[440px] md:h-[520px] lg:h-[600px] xl:h-[680px]  mt-6"
+          className="tech-viewport relative w-full max-w-[1100px] h-[380px] sm:h-[440px] md:h-[520px] lg:h-[600px] xl:h-[680px] mt-6"
         >
           {/* HUD corner brackets */}
           <span className="tech-corner tl" />
@@ -154,8 +178,8 @@ const Tech = () => {
                 cy={centerY}
                 r={halfSize * ring.fraction}
                 fill="none"
-                stroke={ring.accent}
-                strokeOpacity={0.18}
+                stroke="#ffffff"
+                strokeOpacity={0.12}
                 strokeWidth={1}
                 strokeDasharray="2 8"
               />
@@ -209,7 +233,7 @@ const Tech = () => {
             <span className="tech-readout-dot" />
             <span>DIAGNOSTICS</span>
           </div>
-          <div className="tech-readout-body font-mono">
+          <div className="tech-readout-body font-mono" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.div
                 key={focused ? focused.name : "idle"}
@@ -357,24 +381,66 @@ const Tech = () => {
           animation-iteration-count: infinite;
           animation-direction: var(--dir);
           animation-duration: var(--dur);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 6px;
         }
 
         .tech-node {
           position: relative;
-          width: 88px;
-          height: 88px;
+          width: 64px;
+          height: 64px;
           border-radius: 9999px;
-          background: rgba(13,17,23,0.85);
+          background: rgba(13,17,23,0.9);
           backdrop-filter: blur(6px);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
+          overflow: hidden;
           transition: box-shadow 0.25s ease;
         }
-        .tech-node-ball {
-          width: 60px;
-          height: 60px;
+        .tech-node-sheen {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(150deg, rgba(255,255,255,0.14), transparent 45%);
+          pointer-events: none;
+        }
+        .tech-node-icon {
+          width: 30px;
+          height: 30px;
+          position: relative;
+          z-index: 1;
+        }
+        .tech-node-fallback {
+          font-family: "JetBrains Mono", monospace;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          position: relative;
+          z-index: 1;
+        }
+
+        .tech-node-tag {
+          font-family: "JetBrains Mono", monospace;
+          font-size: 10px;
+          letter-spacing: 0.04em;
+          color: rgba(226,232,240,0.65);
+          background: rgba(8,10,14,0.75);
+          border: 1px solid color-mix(in srgb, var(--glow) 45%, transparent);
+          padding: 2px 7px;
+          border-radius: 999px;
+          white-space: nowrap;
+          opacity: 0;
+          transform: translateY(-2px);
+          transition: opacity 0.18s ease, transform 0.18s ease;
+          pointer-events: none;
+        }
+        .tech-node:hover ~ .tech-node-tag,
+        .tech-node:focus-visible ~ .tech-node-tag {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .tech-readout {
@@ -431,9 +497,10 @@ const Tech = () => {
         }
 
         @media (max-width: 480px) {
-          .tech-node { width: 58px; height: 58px; }
-          .tech-node-ball { width: 38px; height: 38px; }
+          .tech-node { width: 46px; height: 46px; }
+          .tech-node-icon { width: 22px; height: 22px; }
           .tech-core { width: 70px; height: 70px; }
+          .tech-node-tag { display: none; }
         }
       `}</style>
     </>
